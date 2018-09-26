@@ -1,0 +1,21 @@
+@import "../component-css/ClientHeader";
+
+.activity-demo {
+  transition: all 1s;
+  border-radius: 5px;
+  transform: scale(1);
+
+  .div {
+    display: flex;
+  }
+}
+
+::placeholder {
+  color: red;
+}
+
+@media (min-resolution: 2dppx) {
+  .image {
+    background: #fff;
+  }
+}

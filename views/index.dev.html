@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.runtime.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <script src="https://unpkg.com/babel-polyfill/dist/polyfill.js"></script>
+  <script src="https://unpkg.com/vuejs-snackbar"></script>
+  <script src="{{ossUrl}}/commonjs/Mixin.js"></script>
+
+  <script>
+  function error(e) {
+    document.write(e.toString() + '<br> Maybe the route is invalid')
+  }
+
+  try {
+    var script = document.createElement('script')
+    var link = document.createElement('link')
+    var component = location.href.split('activity/')[1]
+      .split('#')[0]
+      .split('?')[0]
+    if (component) {
+      script.src = '{{ossUrl}}/pages/' + component + '.js'
+      link.href = '{{ossUrl}}/css/' + component + '.css'
+      link.rel = 'stylesheet'
+    }
+    script.onload = function () {
+      new Vue({
+        el: '#app',
+        mixins: [Activity],
+      })
+    }
+    script.onerror = function (e) {
+      console.log(e)
+      error(e)
+    }
+    document.head.appendChild(link)
+    document.head.appendChild(script)
+  } catch (e) {
+    error(e)
+  }
+  </script>
+</head>
+<body>
+<div id="app"></div>
+<div id="snackbar"></div>
+
+<script type="text/javascript">
+window.snackbar = new Vue({
+  el: '#snackbar',
+  mixins: [VueSnackbar],
+})
+</script>
+</body>
+</html>

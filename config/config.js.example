@@ -1,0 +1,6 @@
+'use strict'
+module.exports = {
+  localhost: 'http://localhost:8883/api/v1', // 服务器运行 server-index.js 时使用
+  backendUrl: 'http://localhost:8883/api/v1',
+  ossUrl: 'http://ztstatic.oss-cn-hangzhou.aliyuncs.com/',
+}
